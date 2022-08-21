@@ -6,12 +6,15 @@
 package dsd.assignment.servlet;
 
 import dsd.assignment.entity.Address;
+import dsd.assignment.entity.Newslettersubscribe;
 import dsd.assignment.entity.Users;
 import dsd.assignment.session.AddressFacade;
 import dsd.assignment.session.NewslettersubscribeFacade;
 import dsd.assignment.session.UsersFacade;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
+import java.util.Date;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -37,6 +40,8 @@ public class UserServlet extends HttpServlet {
     
     Users user1=new Users();
     Address address1=new Address();
+    Newslettersubscribe subscribe=new Newslettersubscribe();
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -65,11 +70,14 @@ public class UserServlet extends HttpServlet {
             user1.setGender("Male");
             user1.setCountry("SA");
             user1.setEmail("tk@gmai.com");
+           
+            
             
             out.println("<h1>Servlet UserServlet at " + newsLetter.findAllNewsLetters() + "</h1>");
              out.println("<h1>Save user "+ user.registerUser(user1)+ "</h1>");
             out.println("<h1>Save Adress "+ address.createAddress(address1)+ "</h1>");
              out.println("<h1>GET Adress "+ address.getAdressByID(62)+"</h1>");
+            out.println("<h1>GET Adress "+ address.getAdressByID(62)+"</h1>");
           
             out.println("</body>");
             out.println("</html>");
