@@ -10,6 +10,8 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
@@ -38,6 +40,7 @@ public class Address implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @NotNull
     @Column(name = "ADDRESSID")
@@ -53,7 +56,7 @@ public class Address implements Serializable {
     @Column(name = "POSTALADDRESS")
     private String postaladdress;
     @Column(name = "PCODE")
-    private Boolean pcode;
+    private String pcode;
     
     @OneToMany(mappedBy = "addresskey")
     private Collection<Users> usersCollection;
@@ -105,11 +108,11 @@ public class Address implements Serializable {
         this.postaladdress = postaladdress;
     }
 
-    public Boolean getPcode() {
+    public String getPcode() {
         return pcode;
     }
 
-    public void setPcode(Boolean pcode) {
+    public void setPcode(String pcode) {
         this.pcode = pcode;
     }
 
