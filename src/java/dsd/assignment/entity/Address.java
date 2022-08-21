@@ -54,6 +54,7 @@ public class Address implements Serializable {
     private String postaladdress;
     @Column(name = "PCODE")
     private Boolean pcode;
+    
     @OneToMany(mappedBy = "addresskey")
     private Collection<Users> usersCollection;
 
@@ -143,7 +144,9 @@ public class Address implements Serializable {
 
     @Override
     public String toString() {
-        return "dsd.assignment.entity.Address[ addressid=" + addressid + " ]";
+        return "Address{" + "addressid=" + addressid + ", residentiaaddress=" + residentiaaddress + ", rcode=" + rcode + ", issame=" + issame + ", postaladdress=" + postaladdress + ", pcode=" + pcode + ", usersCollection=" + usersCollection + '}';
     }
+
+    
     
 }

@@ -5,8 +5,8 @@
         <property name="serverName" value="localhost"/>
         <property name="portNumber" value="1527"/>
         <property name="databaseName" value="Assignment1"/>
-        <property name="User" value=""/>
-        <property name="Password" value=""/>
+        <property name="User" value="App"/>
+        <property name="Password" value="App"/>
         <property name="URL" value="jdbc:derby://localhost:1527/Assignment1"/>
         <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"/>
     </jdbc-connection-pool>

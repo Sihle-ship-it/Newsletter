@@ -6,9 +6,12 @@
 package dsd.assignment.session;
 
 import dsd.assignment.entity.Newslettersubscribe;
+import dsd.assignment.entity.Users;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -29,4 +32,19 @@ public class NewslettersubscribeFacade extends AbstractFacade<Newslettersubscrib
         super(Newslettersubscribe.class);
     }
     
+    public String subscribe(Newslettersubscribe newsletter){
+        Query qr= em.createNamedQuery("Newslettersubscribe.findByNewsletters", Newslettersubscribe.class);
+        qr.setParameter("newsletters",newsletter.getNewsletters());
+        if(qr.getResultList().isEmpty()){
+            em.persist(newsletter);
+            return "Successfully subscribed to "+newsletter.getNewsletters()+" newsletter";
+        }else{
+            return "Already subscribed to newsletter";
+        }
+    }
+    
+    public List<Newslettersubscribe> findAllNewsLetters(){
+        Query qr= em.createNamedQuery("Newslettersubscribe.findAll", Newslettersubscribe.class);
+        return qr.getResultList();
+    }  
 }
