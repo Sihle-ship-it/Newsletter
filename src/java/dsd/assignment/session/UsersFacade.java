@@ -31,22 +31,23 @@ public class UsersFacade extends AbstractFacade<Users> {
         super(Users.class);
     }
     
-    public String register(Users user){
-        Query qr=em.createNativeQuery("Select * From users where email=?", Users.class);
-        qr.setParameter("email",user.getEmail());
-        if(qr.getSingleResult()==null){
-            em.persist(user);
-            return "User successfully Created";
-        }else{
-            return "User already exist";
-        }
+    public String registerUser(Users user){
+        Query qr= em.createNamedQuery("Users.findByUsername", Users.class);
+        qr.setParameter("username",user.getUsername());
+       
+       if(qr.getResultList().isEmpty()){
+           em.persist(user);
+           return "Successfully created user";
+       }
+        return "Username already in use";
+       
     }
     
-    public Users login(String email,String password){
-        Query qr=em.createNativeQuery("Select * From users where email=? and password=?", Users.class);
-        qr.setParameter("email",email);
+    public Users login(String username,String password){
+        Query qr=em.createNativeQuery("Select * From users where username=? and password=?", Users.class);
+        qr.setParameter("username",username);
         qr.setParameter("password",password);
-        if(qr.getSingleResult()==null){
+        if(qr.getResultList().isEmpty()){
             return null;
         }  
         return (Users)qr.getSingleResult();

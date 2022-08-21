@@ -65,6 +65,7 @@ public class Users implements Serializable {
     private String email;
     @OneToMany(mappedBy = "username")
     private Collection<Newslettersubscribe> newslettersubscribeCollection;
+    
     @JoinColumn(name = "ADDRESSKEY", referencedColumnName = "ADDRESSID")
     @ManyToOne
     private Address addresskey;

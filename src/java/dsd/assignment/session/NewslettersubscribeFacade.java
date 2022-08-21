@@ -35,17 +35,16 @@ public class NewslettersubscribeFacade extends AbstractFacade<Newslettersubscrib
     public String subscribe(Newslettersubscribe newsletter){
         Query qr= em.createNamedQuery("Newslettersubscribe.findByNewsletters", Newslettersubscribe.class);
         qr.setParameter("newsletters",newsletter.getNewsletters());
-        if(qr.getSingleResult()==null){
+        if(qr.getResultList().isEmpty()){
             em.persist(newsletter);
-            return "Newsletter successfully Created";
+            return "Successfully subscribed to "+newsletter.getNewsletters()+" newsletter";
         }else{
-            return "Newsletter already exist";
+            return "Already subscribed to newsletter";
         }
     }
     
     public List<Newslettersubscribe> findAllNewsLetters(){
-        javax.persistence.criteria.CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-        cq.select(cq.from(Newslettersubscribe.class));
-        return em.createQuery(cq).getResultList();
+        Query qr= em.createNamedQuery("Newslettersubscribe.findAll", Newslettersubscribe.class);
+        return qr.getResultList();
     }  
 }
