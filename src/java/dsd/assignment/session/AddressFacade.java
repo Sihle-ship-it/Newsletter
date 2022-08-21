@@ -29,4 +29,15 @@ public class AddressFacade extends AbstractFacade<Address> {
         super(Address.class);
     }
     
+    public String createAddress (Address address){
+        em.persist(address);
+        return "Manufacturer created";
+    }
+    
+    public void update (Address address){
+        em.merge(address);
+    }
+    
+    
+    
 }
