@@ -134,18 +134,30 @@
 
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body">
-                                        <form>
+                                    
+                                        <form action="./SubscribeServlet" method="post">
+                                            <div class="modal-body">
                                             <div class="mb-3">
+                                                 
                                                 <label for="exampleInputEmail1" class="form-label">End date</label>
-                                                <input type="date" class="form-control" id="exampleInputEmail1">                                               
+                                                <input type="date" class="form-control" id="sdate" name="sname"> 
+                                                <div class="form-group">
+                                                    <select class="form-control form-control-lg" id="newsletter" name="newsletter">
+                                                        <option disable>News Letter</option>
+                                                        <option value="sabc">SABC</option>
+                                                        <option value="cnn">CNN</option>
+                                                        <option value="eNews">eNews</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-outline-danger">Subscribe</button>
-                                    </div>
+                                        
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-outline-danger">Subscribe</button>
+                                            </div>
+                                       </form>
+                                            
                                 </div>
                             </div>
                         </div>

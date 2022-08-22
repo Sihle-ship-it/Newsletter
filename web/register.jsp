@@ -34,7 +34,7 @@
                                 </div>
                                 <h4>New here?</h4>
                                 <h6 class="font-weight-light">Signing up is easy. It only takes a few steps</h6>
-                                <form class="pt-3" action="./LoginServlet" method="POST">
+                                <form class="pt-3" action="./RegisterServlet" method="POST">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-lg" id="username" name="username" placeholder="Username">
                                     </div>
@@ -81,7 +81,7 @@
                                         <input type="text" class="form-control form-control-lg" id="paddress" name="paddress" placeholder="Postal Address">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-lg" id="pcode" name="pcode" placeholder="Postal Code">
+                                        <input type="text" class="form-control form-control-lg" id="pcode" name="pcode" placeholder="Postal Code">
                                     </div>
                                     <div class="mb-4">
 

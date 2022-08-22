@@ -37,14 +37,14 @@ public class UsersFacade extends AbstractFacade<Users> {
        
        if(qr.getResultList().isEmpty()){
            em.persist(user);
-           return "Successfully created user";
+           return "Success";
        }
-        return "Username already in use";
+        return "failed";
        
     }
     
     public Users login(String username,String password){
-        Query qr=em.createNativeQuery("Select * From users where username=? and password=?", Users.class);
+        Query qr= em.createNamedQuery("Users.findByUsernamePassword", Users.class);
         qr.setParameter("username",username);
         qr.setParameter("password",password);
         if(qr.getResultList().isEmpty()){

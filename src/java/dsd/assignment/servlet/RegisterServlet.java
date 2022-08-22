@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mukwevho
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
+@WebServlet(name = "RegisterServlet", urlPatterns = {"/RegisterServlet"})
 public class RegisterServlet extends HttpServlet {
 
     @EJB
@@ -36,8 +36,8 @@ public class RegisterServlet extends HttpServlet {
         Address address1=new Address();
         Users user1=new Users();
       
-            //SUbmit to address retun id
-            
+           
+            address1.setAddressid(1);
             address1.setIssame(false);
             address1.setRcode(Integer.parseInt(request.getParameter("rcode")));
             address1.setResidentiaaddress(request.getParameter("raddress"));
@@ -50,14 +50,20 @@ public class RegisterServlet extends HttpServlet {
             user1.setFirstname(request.getParameter("firstname"));
             user1.setLastname(request.getParameter("lastname"));
             user1.setIdnumber(request.getParameter("idno"));
-            user1.setAddresskey(address1); //put id here then submit to db
+            user1.setAddresskey(address1);
             user1.setGender(request.getParameter("gender"));
             user1.setCountry(request.getParameter("country"));
             user1.setEmail(request.getParameter("email"));
      
            String message=user.registerUser(user1);
-           System.out.println("In something"+message);
+           String address3=address.createAddress(address1);
+           System.out.println("In something "+message);
+           System.out.println("In something "+address3);
         
+           if(message.equals("Success")){
+               response.sendRedirect("index.jsp");
+           }
+           
     }
 
     /**
